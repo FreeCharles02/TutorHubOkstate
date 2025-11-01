@@ -1,0 +1,29 @@
+import { Container, Navbar as BsNavbar, Nav, Form, FormControl, Dropdown } from 'react-bootstrap'
+
+export const Navbar = () => {
+  return (
+    <BsNavbar bg="white" expand="lg" className="shadow-sm sticky-top">
+      <Container>
+        <BsNavbar.Brand href="#" className="text-primary fw-bold fs-4">TutorHub</BsNavbar.Brand>
+        <Form className="d-flex mx-auto" style={{ width: '33%' }}>
+          <FormControl
+            type="search"
+            placeholder="Search tutors, subjects, or areas..."
+            className="rounded-pill"
+          />
+        </Form>
+        <Nav>
+          <Dropdown>
+            <Dropdown.Toggle variant="outline-primary" id="profile-dropdown">
+              Profile
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>Login as Student</Dropdown.Item>
+              <Dropdown.Item>Login as Tutor</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Nav>
+      </Container>
+    </BsNavbar>
+  )
+}

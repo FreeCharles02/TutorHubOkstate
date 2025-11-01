@@ -15,6 +15,7 @@ export const Navbar = () => {
         <Nav>
           <Dropdown>
             <Dropdown.Toggle variant="outline-primary" id="profile-dropdown">
+              <span style={{ marginRight: '0.5rem' }}>👤</span>
               Profile
             </Dropdown.Toggle>
             <Dropdown.Menu>

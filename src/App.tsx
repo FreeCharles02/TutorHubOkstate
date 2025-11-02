@@ -19,7 +19,7 @@ function App() {
     axios.get("api/")
     .then((response) => {
       console.log(response.data)
-    }) 
+    })
   }, [])
   console.log('App is rendering!');
   console.log('ChatBox:', ChatBox);

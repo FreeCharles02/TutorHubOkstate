@@ -18,7 +18,7 @@ export const Navbar = () => {
               <span style={{ marginRight: '0.5rem' }}>👤</span>
               Profile
             </Dropdown.Toggle>
-            <Dropdown.Menu>
+            <Dropdown.Menu className='dropmen'>
               <Dropdown.Item>Login as Student</Dropdown.Item>
               <Dropdown.Item>Login as Tutor</Dropdown.Item>
             </Dropdown.Menu>

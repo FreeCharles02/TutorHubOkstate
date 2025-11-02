@@ -1,3 +1,5 @@
+import { ScrollFadeSection } from './ScrollFadeHook'
+
 export const SubjectGrid = () => {
   const subjects = [
     { name: "Reading", icon: "📚" },
@@ -9,26 +11,28 @@ export const SubjectGrid = () => {
     { name: "Art", icon: "🎨"},
     { name: "Other", icon: "✨" }
   ]
-
-    return (
-    <section className="py-5 bg-white">
-      <div className="container">
-        <h2 className="display-5 fw-bold text-center mb-3">
-          Start Your Journey...
-        </h2>
-        <p className="text-center text-muted mb-5">Choose a subject to find the perfect tutor</p>
-        <div className="row g-4">
-          {subjects.map((subject) => (
-            <div key={subject.name} className="col-md-4 col-lg-3">
-              <a href={subject.name === "Other" ? "https://www.youtube.com/watch?v=IxX_QHay02M&list=RDIxX_QHay02M&start_radio=1" : "/signup"} className="text-decoration-none" target={subject.name === "Other" ? "_blank" : undefined} rel={subject.name === "Other" ? "noopener noreferrer" : undefined}>
-                <div className="card h-100 shadow-sm text-center p-4" style={{ cursor: 'pointer' }}>
-                  <div style={{ fontSize: '3rem' }}>{subject.icon}</div>
-                  <h5 className="mt-3 fw-semibold text-dark">{subject.name}</h5>
-                </div>
-              </a>
-            </div>
-          ))}
+  return (
+    <section className="bg-white d-flex align-items-center justify-content-center" style={{ minHeight: '80vh' }}>
+      <ScrollFadeSection className="w-100">
+        <div className="container">
+          <h2 className="display-5 fw-bold text-center mb-3">
+            Start Your Journey...
+          </h2>
+          <p className="text-center text-muted mb-5">Choose a subject to find the perfect tutor</p>
+          <div className="row g-4">
+            {subjects.map((subject) => (
+              <div key={subject.name} className="col-md-4 col-lg-3">
+                <a href={subject.name === "Other" ? "https://www.youtube.com/watch?v=NUYvbT6vTPs" : "/signup"} className="text-decoration-none" target={subject.name === "Other" ? "_blank" : undefined} rel={subject.name === "Other" ? "noopener noreferrer" : undefined}>
+                  <div className="card h-100 shadow-sm text-center p-4" style={{ cursor: 'pointer' }}>
+                    <div style={{ fontSize: '3rem' }}>{subject.icon}</div>
+                    <h5 className="mt-3 fw-semibold text-dark">{subject.name}</h5>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollFadeSection>
     </section>
-  )}
+  )
+}

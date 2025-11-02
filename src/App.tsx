@@ -7,6 +7,7 @@ import { Footer } from './components/Footer'
 import { ChatBox } from './components/ChatBox'
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
+import SignUpAsTutor from "./components/SignUpAsTutor";
 
 function App() {
   console.log('App is rendering!');
@@ -27,6 +28,7 @@ function App() {
           
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
+          <Route path="/signupastutor" element={<SignUpAsTutor />} />
         </Routes>
       </main>
 

@@ -44,7 +44,7 @@ export const ChatBox = () => {
           overflow: 'hidden'
         }}>
           <div style={{
-            backgroundColor: '#0d6efd',
+            backgroundColor: '#0e59c9ff',
             color: 'white',
             padding: '15px',
             display: 'flex',
@@ -92,7 +92,7 @@ export const ChatBox = () => {
                   <div style={{
                     padding: '10px 15px',
                     borderRadius: '15px',
-                    backgroundColor: msg.sender === 'user' ? '#0d6efd' : 'white',
+                    backgroundColor: msg.sender === 'user' ? '#0e59c9ff' : 'white',
                     color: msg.sender === 'user' ? 'white' : 'black',
                     wordWrap: 'break-word',
                     boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
@@ -132,7 +132,7 @@ export const ChatBox = () => {
             <button 
               onClick={handleSend}
               style={{
-                backgroundColor: '#0d6efd',
+                backgroundColor: '#0e59c9ff',
                 color: 'white',
                 border: 'none',
                 borderRadius: '20px',
@@ -153,14 +153,13 @@ export const ChatBox = () => {
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          backgroundColor: '#0d6efd',
+          backgroundColor: '#0e59c9ff',
           color: 'white',
           border: 'none',
           fontSize: '1.5rem',
           cursor: 'pointer',
           boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-          transition: 'transform 0.2s',
-          zIndex: 9999
+          transition: 'transform 0.2s'
         }}
         onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
         onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}

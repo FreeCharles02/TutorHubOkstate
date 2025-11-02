@@ -47,8 +47,6 @@ function normalizeTutors(input: unknown): Tutor[] {
 			email: t.email,
 			rating: Math.max(0, Math.min(5, Number(t.rating) || 0)),
 		}))
-
-		
 }
 
 export const FindATutor = () => {
@@ -58,26 +56,12 @@ export const FindATutor = () => {
 
 	useEffect(() => {
 		let mounted = true
-		
-		
 
 		async function fetchTutors() {
 			setLoading(true)
 			setError(null)
 			try {
-				// TODO: Replace this mock with a real API call, e.g.:
-				// const res = await fetch('/api/tutors')
-				// const data = await res.json()
-				// const normalized = normalizeTutors(data)
 				const resposnse = await axios.get("api/find");
-
-				
-				// Mock payload to simulate backend response
-			/*	const mockPayload: ApiTutor[] = [
-					{ name: 'Alex Carter', ["Grad/Undergrad"]: true, email: 'alex.carter@example.com', rating: 5 },
-					{ name: 'Jamie Lee', ["Grad/Undergrad"]: false, email: 'jamie.lee@example.com', rating: 4 },
-					{ name: 'Priya Patel', ["Grad/Undergrad"]: true, email: 'priya.patel@example.com', rating: 5 },
-				] */
 
 				const normalized = normalizeTutors((resposnse.data))
 				if (mounted) setTutors(normalized)

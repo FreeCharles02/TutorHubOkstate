@@ -12,14 +12,14 @@ import LearnMore from "./components/LearnMore";
 import { FindATutor } from "./components/FindATutor";
 import { useEffect } from 'react'
 import axios from 'axios'
-
+import { SubjectGrid } from './components/SubjectGrid'
 
 function App() {
   useEffect(() => {
     axios.get("api/")
     .then((response) => {
       console.log(response.data)
-    }) 
+    })
   }, [])
   console.log('App is rendering!');
   console.log('ChatBox:', ChatBox);
@@ -32,6 +32,7 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
+              <SubjectGrid /> 
               <Reviews />
               <TutorCTA />
             </>

@@ -9,6 +9,7 @@ import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import SignUpAsTutor from "./components/SignUpAsTutor";
 import LearnMore from "./components/LearnMore";
+import { FindATutor } from "./components/FindATutor";
 
 function App() {
   console.log('App is rendering!');
@@ -26,11 +27,12 @@ function App() {
               <TutorCTA />
             </>
           }/>
-          
+
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signupastutor" element={<SignUpAsTutor />} />
           <Route path="/learnmore" element={<LearnMore />} />
+          <Route path="/find-a-tutor" element={<FindATutor />} />
         </Routes>
       </main>
 

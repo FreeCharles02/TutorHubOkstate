@@ -12,6 +12,12 @@ export default function LogIn() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     alert(`Welcome back, ${form.email}!`);
+    // TODO: send login data to backend later
+
+    if (true) { // TODO: implement real authentication
+      //redirect to FindATutor page
+      window.location.href = "/find-a-tutor";
+    }
   };
 
   return (
@@ -29,7 +35,7 @@ export default function LogIn() {
         {/* Form Card */}
         <Card className="shadow-sm border-0 p-4" style={{ borderRadius: "14px", backgroundColor: "#ffffff" }}>
           <Form onSubmit={handleSubmit}>
-            
+
             {/* Email */}
             <Form.Group className="mb-3">
               <Form.Label className="fw-semibold">Email</Form.Label>
@@ -71,7 +77,7 @@ export default function LogIn() {
             </Form.Group>
 
             {/* Submit Button */}
-            <Button 
+            <Button
               type="submit"
               className="w-100 fw-semibold"
               style={{

@@ -1,17 +1,18 @@
 import { useEffect, useMemo, useState } from 'react'
+import axios from 'axios';
 
 type ApiTutor = {
 	name: string
 	// The backend example uses a key with a slash; access via bracket notation
 	// true => Graduate, false => Undergraduate (assumption; adjust if backend differs)
-	["Grad/Undergrad"]: boolean
+	grade: string
 	email: string
 	rating: number
 }
 
 type Tutor = {
 	name: string
-	isGrad: boolean
+	grade: string
 	email: string
 	rating: number
 }
@@ -21,7 +22,8 @@ function normalizeTutors(input: unknown): Tutor[] {
 	// If the backend returns { tutors: ApiTutor[] } or { data: ApiTutor[] } or just ApiTutor[]
 	const maybeArray = ((): unknown[] | null => {
 		if (Array.isArray(input)) return input
-		if (input && typeof input === 'object') {
+		if (input /*&& typeof input === 'object'*/) {
+			console.log("I AM TRUE")
 			const obj = input as Record<string, unknown>
 			if (Array.isArray(obj.tutors)) return obj.tutors
 			if (Array.isArray(obj.data)) return obj.data
@@ -33,18 +35,20 @@ function normalizeTutors(input: unknown): Tutor[] {
 		return null
 	})()
 
-	if (!maybeArray) return []
+	if (!maybeArray) return [];
 
 	return maybeArray
 		.filter((x): x is ApiTutor =>
-			x != null && typeof x === 'object' && 'name' in x && 'email' in x && 'rating' in x && 'Grad/Undergrad' in x
+			x != null && typeof x === 'object' && 'name' in x && 'email' in x && 'rating' in x && 'grade' in x
 		)
 		.map((t) => ({
 			name: t.name,
-			isGrad: Boolean((t as ApiTutor)["Grad/Undergrad"]),
+		    grade: t.grade,
 			email: t.email,
 			rating: Math.max(0, Math.min(5, Number(t.rating) || 0)),
 		}))
+
+		
 }
 
 export const FindATutor = () => {
@@ -54,6 +58,8 @@ export const FindATutor = () => {
 
 	useEffect(() => {
 		let mounted = true
+		
+		
 
 		async function fetchTutors() {
 			setLoading(true)
@@ -63,15 +69,17 @@ export const FindATutor = () => {
 				// const res = await fetch('/api/tutors')
 				// const data = await res.json()
 				// const normalized = normalizeTutors(data)
+				const resposnse = await axios.get("api/find");
 
+				
 				// Mock payload to simulate backend response
-				const mockPayload: ApiTutor[] = [
+			/*	const mockPayload: ApiTutor[] = [
 					{ name: 'Alex Carter', ["Grad/Undergrad"]: true, email: 'alex.carter@example.com', rating: 5 },
 					{ name: 'Jamie Lee', ["Grad/Undergrad"]: false, email: 'jamie.lee@example.com', rating: 4 },
 					{ name: 'Priya Patel', ["Grad/Undergrad"]: true, email: 'priya.patel@example.com', rating: 5 },
-				]
+				] */
 
-				const normalized = normalizeTutors(mockPayload)
+				const normalized = normalizeTutors((resposnse.data))
 				if (mounted) setTutors(normalized)
 							} catch {
 						if (mounted) setError('Failed to load tutors. Please try again later.')
@@ -112,8 +120,8 @@ export const FindATutor = () => {
 							<div className="card-body d-flex flex-column">
 								<div className="mb-2 d-flex justify-content-between align-items-start">
 									<h3 className="h5 fw-semibold mb-0">{tutor.name}</h3>
-									<span className={`badge ${tutor.isGrad ? 'bg-primary-subtle text-primary-emphasis' : 'bg-secondary-subtle text-secondary-emphasis'}`}>
-										{tutor.isGrad ? 'Graduate' : 'Undergraduate'}
+									<span className={`badge ${tutor.grade == "Graduate" ? 'bg-primary-subtle text-primary-emphasis' : 'bg-secondary-subtle text-secondary-emphasis'}`}>
+										{tutor.grade}
 									</span>
 								</div>
 								<div className="mb-2 text-warning">

@@ -26,7 +26,7 @@ public class DemoApplication implements CommandLineRunner {
 		List<Student> returnSql = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Student.class));
 		List<Tutor> returnSql2 = jdbcTemplate.query(sql2, BeanPropertyRowMapper.newInstance(Tutor.class));
 		returnSql.forEach((s) -> System.out.println("Student: " + s.getName() + " " + s.getGrade() + " " + s.getMajor() + " " + s.getRating()));
-   		returnSql2.forEach(t -> System.out.println("Tutors: " + t.getName() + " " + t.getGrade()  + " " + t.getRating()));
+   		returnSql2.forEach(t -> System.out.println("Tutors: " + t.getName() + " " + t.getGrade()  + " " + t.getRating() + " " + t.getEmail()));
 	}
 
 	// Simple Student POJO used for row mapping
@@ -86,6 +86,7 @@ public class DemoApplication implements CommandLineRunner {
 		private String name;
 		private String grade;
 		private int rating;
+		private String email;
 
 
 		public Tutor() {
@@ -121,6 +122,14 @@ public class DemoApplication implements CommandLineRunner {
 
 		public void setRating(int rating) {
 			this.rating = rating;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getEmail() {
+			return email;
 		}
 	}
 

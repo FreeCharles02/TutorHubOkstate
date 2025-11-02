@@ -5,15 +5,16 @@ import { Eye, EyeSlash } from "react-bootstrap-icons";
 export default function LogIn() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const i = true;
 
-  const handleChange = (e: any) =>
+  const handleChange = (e: Event) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // TODO: send login data to backend later
 
-    if (true) { // TODO: implement real authentication
+    if (i) { // TODO: implement real authentication
       //redirect to FindATutor page
       window.location.href = "/find-a-tutor";
     }

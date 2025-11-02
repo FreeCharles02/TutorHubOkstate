@@ -12,7 +12,7 @@ import LearnMore from "./components/LearnMore";
 import { FindATutor } from "./components/FindATutor";
 import { useEffect } from 'react'
 import axios from 'axios'
-
+import { SubjectGrid } from './components/SubjectGrid'
 
 function App() {
   useEffect(() => {
@@ -32,6 +32,7 @@ function App() {
           <Route path="/" element={
             <>
               <Hero />
+              <SubjectGrid /> 
               <Reviews />
               <TutorCTA />
             </>

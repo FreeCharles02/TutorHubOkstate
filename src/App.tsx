@@ -8,6 +8,7 @@ import { ChatBox } from './components/ChatBox'
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import SignUpAsTutor from "./components/SignUpAsTutor";
+import LearnMore from "./components/LearnMore";
 
 function App() {
   console.log('App is rendering!');
@@ -29,6 +30,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signupastutor" element={<SignUpAsTutor />} />
+          <Route path="/learnmore" element={<LearnMore />} />
         </Routes>
       </main>
 

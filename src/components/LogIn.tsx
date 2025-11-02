@@ -1,57 +1,100 @@
-import { useState } from "react";
-import type { FormEvent, ChangeEvent } from "react";
-import { Button } from "react-bootstrap";
+import { useState, type FormEvent } from "react";
+import { Container, Form, Button, Card } from "react-bootstrap";
+import { Eye, EyeSlash } from "react-bootstrap-icons";
 
-interface LoginForm {
-  email: string;
-  password: string;
-}
+export default function LogIn() {
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
-export default function Login() {
-  const [form, setForm] = useState<LoginForm>({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) =>
     setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    alert(`Logged in as ${form.email}`);
-    // TODO: send login data to backend later
+    alert(`Welcome back, ${form.email}!`);
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-      <h2>Log In</h2>
+    <div style={{ backgroundColor: "#f8f9fc", minHeight: "100vh" }} className="d-flex align-items-center">
+      <Container style={{ maxWidth: "450px" }}>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
-          type="email"
-          required
-        />
+        {/* Hero Title */}
+        <div className="text-center mb-5">
+          <h1 className="fw-bold" style={{ color: "#0A1A44" }}>Log In</h1>
+          <p className="text-muted">
+            Welcome back to TutorHub — let's continue your journey.
+          </p>
+        </div>
 
-        <input
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
-          type="password"
-          required
-        />
+        {/* Form Card */}
+        <Card className="shadow-sm border-0 p-4" style={{ borderRadius: "14px", backgroundColor: "#ffffff" }}>
+          <Form onSubmit={handleSubmit}>
+            
+            {/* Email */}
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-semibold">Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                placeholder="name@school.edu"
+                value={form.email}
+                onChange={handleChange}
+                required
+                style={{ padding: "12px" }}
+              />
+            </Form.Group>
 
-        <Button type="submit" style={{ width: "100%" }}>
-          Login
-        </Button>
-      </form>
+            {/* Password */}
+            <Form.Group className="mb-4" style={{ position: "relative" }}>
+              <Form.Label className="fw-semibold">Password</Form.Label>
+              <Form.Control
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={form.password}
+                onChange={handleChange}
+                required
+                style={{ padding: "12px", paddingRight: "42px" }}
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "38px",
+                  cursor: "pointer",
+                  color: "gray",
+                }}
+              >
+                {showPassword ? <EyeSlash size={18} /> : <Eye size={18} />}
+              </span>
+            </Form.Group>
+
+            {/* Submit Button */}
+            <Button 
+              type="submit"
+              className="w-100 fw-semibold"
+              style={{
+                borderRadius: "10px",
+                backgroundColor: "#0A75FF",
+                border: "none",
+                padding: "12px",
+                fontSize: "1rem",
+              }}
+            >
+              Log In
+            </Button>
+          </Form>
+        </Card>
+
+        {/* Link to Signup */}
+        <p className="text-center mt-3 text-muted">
+          New here?{" "}
+          <a href="/signup" style={{ color: "#0A75FF", fontWeight: 600, textDecoration: "none" }}>
+            Create an account
+          </a>
+        </p>
+      </Container>
     </div>
   );
 }

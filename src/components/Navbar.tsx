@@ -23,8 +23,8 @@ export const Navbar = () => {
               Profile
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item>Login as Student</Dropdown.Item>
-              <Dropdown.Item>Login as Tutor</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.open("/LogIn", "_self")}> Login as Student</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.open("/LogIn", "_self")}>Login as Tutor</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Nav>

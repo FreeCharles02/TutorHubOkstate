@@ -3,7 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 export default function LearnMore() {
   return (
     <div style={{ backgroundColor: "#ffffff", fontFamily: "Inter, sans-serif" }}>
-      
+
       {/* Hero Section */}
       <section
         style={{
@@ -19,7 +19,7 @@ export default function LearnMore() {
           </h1>
           <p className="fs-4 mb-4" style={{ opacity: 0.9, lineHeight: "1.6" }}>
             TutorHub connects students with verified peer mentors who have
-            proven academic excellence — delivering tailored, trustworthy 
+            proven academic excellence — delivering tailored, trustworthy
             support for every course.
           </p>
         </Container>
@@ -36,13 +36,13 @@ export default function LearnMore() {
 
           <p className="fs-5 text-muted mb-3" style={{ lineHeight: "1.7" }}>
             College is demanding — and navigating academic challenges shouldn’t be an
-            isolating experience or a financial burden. Traditional tutoring options are 
+            isolating experience or a financial burden. Traditional tutoring options are
             often expensive and generalized, while informal student help can be inconsistent.
           </p>
 
           <p className="fs-5 text-muted mb-3" style={{ lineHeight: "1.7" }}>
             TutorHub bridges the gap. We pair students with high-performing peers who have
-            excelled in the exact courses they need help in — offering relevant insight, 
+            excelled in the exact courses they need help in — offering relevant insight,
             verified credibility, and a mentorship-driven learning experience.
           </p>
 
@@ -109,8 +109,8 @@ export default function LearnMore() {
             Our Vision
           </h2>
           <p className="fs-5 text-muted" style={{ lineHeight: "1.7" }}>
-            To build a trusted peer-learning network across universities, 
-            empowering students to excel academically and professionally 
+            To build a trusted peer-learning network across universities,
+            empowering students to excel academically and professionally
             through shared knowledge and meaningful mentorship.
           </p>
         </section>
@@ -131,15 +131,15 @@ export default function LearnMore() {
           </p>
 
           <div className="d-flex justify-content-center gap-3 flex-wrap">
-            <a 
+            <a
               href="/signup"
               className="btn btn-primary btn-lg px-4"
               style={{ borderRadius: "12px", backgroundColor: "#0A75FF", border: "none" }}
             >
               Get Tutoring
             </a>
-            <a 
-              href="/signupastutor"
+            <a
+              href="/signup-as-tutor"
               className="btn btn-outline-primary btn-lg px-4"
               style={{
                 borderRadius: "12px",

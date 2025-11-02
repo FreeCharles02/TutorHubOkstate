@@ -1,7 +1,7 @@
 import { Container, Button } from 'react-bootstrap'
 
 export const Hero = () => {
- 
+
   return (
     <section className="py-5 bg-white">
       <Container>
@@ -13,13 +13,13 @@ export const Hero = () => {
             Get Connected with Top Tutors in Your Area
           </p>
           <div className="d-flex justify-content-center gap-3">
-            
+
             <Button onClick={() => window.open("/SignUp", "_self")}
              size="lg">
              Sign Up Now
-              
+
               </Button>
-            <Button onClick={() => window.open("/LogIn", "_self")}
+            <Button onClick={() => window.open("/login", "_self")}
             variant="outline-primary" size="lg">Log In</Button>
           </div>
         </div>
@@ -27,4 +27,3 @@ export const Hero = () => {
     </section>
   )
 }
-

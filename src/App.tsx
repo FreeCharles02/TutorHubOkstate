@@ -30,8 +30,8 @@ function App() {
 
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/signupastutor" element={<SignUpAsTutor />} />
-          <Route path="/learnmore" element={<LearnMore />} />
+          <Route path="/signup-as-tutor" element={<SignUpAsTutor />} />
+          <Route path="/learn-more" element={<LearnMore />} />
           <Route path="/find-a-tutor" element={<FindATutor />} />
         </Routes>
       </main>

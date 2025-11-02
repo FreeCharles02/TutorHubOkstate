@@ -19,7 +19,7 @@ export const TutorCTA = () => {
             >
               Sign Up as Tutor
             </Button>
-            <Button onClick={()=> window.open("/LearnMore", "_self")}
+            <Button onClick={()=> window.open("/learn-more", "_self")}
               size="lg"
               variant="outline-light"
             >

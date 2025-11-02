@@ -1,5 +1,5 @@
 import { Container, Navbar as BsNavbar, Nav, Form, FormControl, Dropdown } from 'react-bootstrap'
-import logo from '../assets/logo.png' 
+import logo from '../assets/logo.png'
 
 export const Navbar = () => {
   return (
@@ -23,8 +23,8 @@ export const Navbar = () => {
               Profile
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={() => window.open("/LogIn", "_self")}> Login as Student</Dropdown.Item>
-              <Dropdown.Item onClick={() => window.open("/LogIn", "_self")}>Login as Tutor</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.open("/login", "_self")}> Login as Student</Dropdown.Item>
+              <Dropdown.Item onClick={() => window.open("/login", "_self")}>Login as Tutor</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Nav>

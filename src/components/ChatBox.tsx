@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const ChatBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hi! How can I help you today?", sender: "support", time: "10:30 AM" }
+    // Initial greeting has no visible time
+    { id: 1, text: "Hi! How can I help you today?", sender: "support", time: "" }
   ]);
+  const [isTyping, setIsTyping] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const handleSend = () => {
@@ -17,28 +19,60 @@ export const ChatBox = () => {
       };
       setMessages([...messages, newMessage]);
       setInputValue("");
-      
+
+      // Randomized bot response (text + delay)
+      const BOT_REPLIES = [
+        "Thanks for reaching out! A tutor will respond shortly.",
+        "Got it! We’re connecting you with the right person now.",
+        "Thanks for your message! Our team will get back to you shortly.",
+        "Appreciate the details — hang tight while we take a look.",
+        "Thanks! We’ll follow up with options as soon as possible."
+      ];
+      const replyText = BOT_REPLIES[Math.floor(Math.random() * BOT_REPLIES.length)];
+      // Delay between 700ms and 2200ms
+      const delay = Math.floor(700 + Math.random() * 1500);
+
+      // Show typing indicator during delay
+      setIsTyping(true);
+
       setTimeout(() => {
+        setIsTyping(false);
         setMessages(prev => [...prev, {
           id: prev.length + 1,
-          text: "Thanks for your message! Our team will get back to you shortly.",
+          text: replyText,
           sender: "support",
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }]);
-      }, 1000);
+      }, delay);
     }
   };
 
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const el = scrollRef.current;
+    if (el) {
+      // Scroll on next frame to ensure DOM is painted
+      requestAnimationFrame(() => {
+        el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+      });
+    }
+  }, [messages, isTyping, isOpen]);
+
   return (
-    <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>
+    <>
       {isOpen && (
         <div style={{
+          position: 'fixed',
+          bottom: '90px',
+          right: '20px',
+          zIndex: 1000,
           width: '350px',
           height: '500px',
           backgroundColor: 'white',
           borderRadius: '10px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-          marginBottom: '10px',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden'
@@ -57,7 +91,7 @@ export const ChatBox = () => {
                 <span style={{ color: '#90EE90' }}>●</span> Online
               </div>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               style={{
                 background: 'none',
@@ -72,16 +106,16 @@ export const ChatBox = () => {
               ×
             </button>
           </div>
-          
-          <div style={{
+
+          <div ref={scrollRef} style={{
             flex: 1,
             overflowY: 'auto',
             padding: '15px',
             backgroundColor: '#f8f9fa'
           }}>
             {messages.map((msg) => (
-              <div 
-                key={msg.id} 
+              <div
+                key={msg.id}
                 style={{
                   marginBottom: '15px',
                   display: 'flex',
@@ -99,14 +133,44 @@ export const ChatBox = () => {
                   }}>
                     {msg.text}
                   </div>
-                  <small style={{ fontSize: '0.7rem', color: '#6c757d', marginTop: '2px', display: 'block' }}>
-                    {msg.time}
-                  </small>
+                  {msg.time && (
+                    <small style={{ fontSize: '0.7rem', color: '#6c757d', marginTop: '2px', display: 'block' }}>
+                      {msg.time}
+                    </small>
+                  )}
                 </div>
               </div>
             ))}
+
+            {isTyping && (
+              <div
+                style={{
+                  marginBottom: '15px',
+                  display: 'flex',
+                  justifyContent: 'flex-start'
+                }}
+                aria-live="polite"
+              >
+                <div style={{ maxWidth: '75%' }}>
+                  <div style={{
+                    padding: '10px 15px',
+                    borderRadius: '15px',
+                    backgroundColor: 'white',
+                    color: 'black',
+                    wordWrap: 'break-word',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <div className="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></div>
+                    <span>Typing…</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          
+
           <div style={{
             padding: '15px',
             backgroundColor: 'white',
@@ -129,7 +193,7 @@ export const ChatBox = () => {
                 fontSize: '14px'
               }}
             />
-            <button 
+            <button
               onClick={handleSend}
               style={{
                 backgroundColor: '#0e59c9ff',
@@ -146,10 +210,14 @@ export const ChatBox = () => {
           </div>
         </div>
       )}
-      
-      <button 
+
+      <button
         onClick={() => setIsOpen(!isOpen)}
         style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1001,
           width: '60px',
           height: '60px',
           borderRadius: '50%',
@@ -166,7 +234,7 @@ export const ChatBox = () => {
       >
         💬
       </button>
-    </div>
+    </>
   );
 };
 

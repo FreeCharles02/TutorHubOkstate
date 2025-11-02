@@ -11,7 +11,6 @@ export default function LogIn() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    alert(`Welcome back, ${form.email}!`);
     // TODO: send login data to backend later
 
     if (true) { // TODO: implement real authentication

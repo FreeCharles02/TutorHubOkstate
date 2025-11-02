@@ -6,7 +6,7 @@ const reviews = [
     name: "Sarah Johnson",
     role: "Student",
     content: "Found an amazing math tutor who helped me ace my calculus exam. The platform is so easy to use!",
-    rating: 5,
+    rating: 4,
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const reviews = [
     name: "James Nguyen",
     role: "Parent",
     content: "TutorHub made it easy to find a reliable math tutor for my son. His grades improved dramatically!",
-    rating: 5,
+    rating: 4,
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ export const Reviews = () => {
     if (!scrollContainer) return
 
     let scrollAmount = 0
-    const scrollSpeed = 1 
+    const scrollSpeed = 1
 
     const scroll = () => {
       scrollAmount += scrollSpeed
@@ -112,37 +112,40 @@ export const Reviews = () => {
             >
               <div className="card h-100 shadow-sm">
                 <div className="card-body">
-  <div className="mb-3 d-flex align-items-center gap-3">
-    <div 
-      style={{
-        width: '50px',
-        height: '50px',
-        borderRadius: '50%',
-        backgroundColor: '#0d6efd',
-        color: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '1.2rem',
-        fontWeight: 'bold',
-        flexShrink: 0
-      }}
-    >
-      {review.name.charAt(0)}
-    </div>
-    <div>
-      <h3 className="h5 fw-semibold mb-0">{review.name}</h3>
-      <p className="text-secondary mb-0">{review.role}</p>
-    </div>
-  </div>
-  <div className="text-warning mb-1">
-    {[...Array(review.rating)].map((_, i) => (
-      <i key={i} className="bi bi-star-fill me-1"></i>
-    ))}
-    <span className="text-muted ms-2">{review.rating}/5</span>
-  </div>
-  <p className="text-body mb-1">{review.content}</p>
-</div>
+                  <div className="mb-1 d-flex align-items-center gap-3">
+                    <div 
+                      style={{
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '50%',
+                        backgroundColor: '#0d6efd',
+                        color: 'white',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '1.2rem',
+                        fontWeight: 'bold',
+                        flexShrink: 0
+                      }}
+                    >
+                      {review.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="h5 fw-semibold mb-0">{review.name}</h3>
+                      <p className="text-secondary mb-0">{review.role}</p>
+                    </div>
+                  </div>
+                  <div className="text-warning mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <i 
+                        key={i} 
+                        className={`bi ${i < review.rating ? 'bi-star-fill' : 'bi-star'} me-1`}
+                      ></i>
+                    ))}
+                    <span className="text-muted ms-2">{review.rating}/5</span>
+                  </div>
+                  <p className="text-body mb-1">{review.content}</p>
+                </div>
               </div>
             </div>
           ))}

@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <BsNavbar bg="white" expand="lg" className="shadow-sm sticky-top">
       <Container>
-        <BsNavbar.Brand href="#" className="text-primary fw-bold fs-4 d-flex align-items-center gap-1">
+        <BsNavbar.Brand href="/" className="text-primary fw-bold fs-4 d-flex align-items-center gap-1">
           TutorHub
           <img src={logo} alt="TutorHub Logo" style={{ height: '40px', width: '40px' }} />
         </BsNavbar.Brand>

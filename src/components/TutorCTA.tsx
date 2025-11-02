@@ -12,14 +12,14 @@ export const TutorCTA = () => {
             Share your knowledge, boost your learning, and earn while helping others succeed.
           </p>
           <div className="d-flex justify-content-center gap-3">
-            <Button
+            <Button onClick={() => window.open("/SignUpAsTutor", "_self")}
               size="lg"
               variant="light"
               className="text-primary"
             >
               Sign Up as Tutor
             </Button>
-            <Button
+            <Button onClick={()=> window.open("/learn-more", "_self")}
               size="lg"
               variant="outline-light"
             >

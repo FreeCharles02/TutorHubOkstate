@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export const Footer = () => {
   return (
     <footer className="bg-dark text-secondary py-5">
@@ -13,7 +15,7 @@ export const Footer = () => {
             <h4 className="text-white fw-semibold mb-3">For Students</h4>
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-secondary text-decoration-none">Find a Tutor</a>
+                <Link to="/login" className="text-secondary text-decoration-none">Find a Tutor</Link>
               </li>
               <li>
                 <a href="#" className="text-secondary text-decoration-none">How it Works</a>
@@ -27,7 +29,7 @@ export const Footer = () => {
             <h4 className="text-white fw-semibold mb-3">For Tutors</h4>
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-secondary text-decoration-none">Become a Tutor</a>
+                <Link to="/signup-as-tutor" className="text-secondary text-decoration-none">Become a Tutor</Link>
               </li>
               <li>
                 <a href="#" className="text-secondary text-decoration-none">Resources</a>
